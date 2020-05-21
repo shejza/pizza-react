@@ -1,0 +1,50 @@
+.bg-img{
+    background:url(../hero-img.jpg);
+    min-height: 512px;
+    background-size: cover;
+}
+.bolded-orange {
+    font-weight: 500;
+    color: #f4511e;
+}
+.img-card {
+    min-width: 200px;
+    min-height: 250px;
+}
+.blog-footer {
+    padding: 2.5rem 0;
+    color: #999;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-top: .05rem solid #e5e5e5;
+}
+.card {
+   height:100%!important;
+   max-height: 260px;
+}
+.desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+@media (max-width: 768px) {
+
+.card {
+    flex-direction: column-reverse!important;
+     height:unset!important;
+   max-height: unset;
+
+}
+
+}
+@media (max-width: 1024px) {
+.desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+}
