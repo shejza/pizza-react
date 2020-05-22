@@ -1,20 +1,23 @@
 import React from 'react';
-import Login from './scenes/auth/scenes/Login';
 import {
   BrowserRouter as Router,
   Route, Switch
 } from 'react-router-dom';
-import Register from './scenes/auth/scenes/Register';
-import Index from './scenes/application';
+
+import Cart from './scenes/application/scenes/cart/scenes/Cart';
+import IndexPizza from './scenes/application/scenes/pizzas/scenes';
+import Header from './scenes/application/scenes/layout/Header';
 
 export default function index() {
   return (
       <React.Fragment>
         <Router>
+           <Header/>
           <Switch>
-            <Route path="/login" component={Login} />
-            <Route path="/register" component={Register} />
-            <Route path="(|/app/*)" component={Index} />
+           
+            <Route exact path="/cart" component={Cart} />
+            <Route path="/" component={IndexPizza} />
+        
           </Switch>
         </Router>
     </React.Fragment>

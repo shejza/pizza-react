@@ -10,6 +10,7 @@
 .img-card {
     min-width: 200px;
     min-height: 250px;
+    max-width: 200px;
 }
 .blog-footer {
     padding: 2.5rem 0;
@@ -17,6 +18,8 @@
     text-align: center;
     background-color: #f9f9f9;
     border-top: .05rem solid #e5e5e5;
+    width: 100%;
+  
 }
 .card {
    height:100%!important;
@@ -47,4 +50,70 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+}
+.price__btn {
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+}
+.btn-primary {
+    background-color: #ee5a00;
+    border-color: #ee5a00;
+}
+.btn-primary:hover {
+    background-color: #e45802;
+    border-color: #ee5a00;
+}
+.btn-primary:active {
+    background-color: #e45802!important;
+    border-color: #ee5a00!important;
+    box-shadow: none;
+}
+.btn-primary:focus {
+    background-color: #e45802;
+    border-color: #ee5a00;
+    box-shadow: none;
+}
+.btn-primary:visited {
+    background-color: #e45802;
+    border-color: #ee5a00;
+}
+.btn-outline-secondary {
+    margin-right: 24px;
+}
+
+.button__wrapper {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+.btn-plus, .btn-minus {
+   font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+.btn-minus {
+    margin-left: 10px;
+}
+.quantity__pizza {
+    margin-top:10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+.quantity-txt {
+    margin:0;
+}
+.img-card2 {
+    min-height: 100px;
+}
+.mt40 {
+    margin-top: 40px;
+}
+.mb40 {
+    margin-bottom: 40px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
 }

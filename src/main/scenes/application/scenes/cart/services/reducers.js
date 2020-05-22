@@ -4,10 +4,7 @@ export function pizzas(state = {}, action) {
       return {
         pizzas: action.pizzas,
       };
-    case "ADD_PIZZA":
-      return {
-        pizzas: [action.pizzas, ...state.pizzas],
-      };
+
     default:
       return state;
   }

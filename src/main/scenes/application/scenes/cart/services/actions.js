@@ -2,7 +2,7 @@ import { apiCalls } from "./api";
 
 export const actions = {
   getAll,
-  create,
+  increment,
 };
 
 function getAll() {
@@ -18,17 +18,8 @@ function getAll() {
   }
 }
 
-function create(formValues) {
-  return (dispatch) => {
-    apiCalls.addPizza(formValues).then((data) => {
-      dispatch(success(data));
-    });
+function increment() {
+  return {
+    type: "INCREMENT",
   };
-
-  function success(pizzas) {
-    return {
-      type: "ADD_PIZZA",
-      pizzas,
-    };
-  }
 }
