@@ -21,7 +21,9 @@ function addPizza(formValues) {
   console.log(formValues);
   formData.append("quantity", formValues.quantity);
   formData.append("price", formValues.price);
-  formData.append("pizza_id", formValues.id);
+  formData.append("id", formValues.id);
+  formData.append("pizza_id", formValues.pizza_id);
+  console.log(formValues);
   const requestUrl = `${apiUrl}pizzas`;
 
   const requestOptions = {
@@ -29,7 +31,6 @@ function addPizza(formValues) {
     headersFormData,
     body: formData,
   };
-  console.log(requestUrl);
-  console.log(formValues);
+
   return fetch(requestUrl, requestOptions).then((response) => response.json());
 }

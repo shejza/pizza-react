@@ -9,7 +9,7 @@ export default function Pizza({ pizza }) {
     dispatch(actions.create(pizza));
   };
   return (
-    <div className="col-md-6">
+    <div className="col-md-6" key={pizza.pizza_id}>
       <div className="card flex-md-row mb-4 box-shadow h-md-250">
         <div className="card-body d-flex flex-column align-items-start">
           <h3 className="mb-0">{pizza.name}</h3>

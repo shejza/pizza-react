@@ -6,7 +6,7 @@ export function pizzas(state = {}, action) {
       };
     case "ADD_PIZZA":
       return {
-        pizzas: [action.pizzas, ...state.pizzas],
+        pizzas: [action.pizza, ...state.pizzas],
       };
     default:
       return state;

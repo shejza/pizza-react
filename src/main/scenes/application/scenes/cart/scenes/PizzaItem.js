@@ -2,20 +2,44 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { actions } from "../services/actions";
 
-export default function PizzaItem({ pizza }) {
+export default function PizzaItem({ pizza, deleteItem }) {
   const dispatch = useDispatch();
 
   const [quantity, setCount] = useState(pizza.quantity);
+  const [price_order, setPrice_order] = useState(pizza.price_order);
 
   const quantityIncrement = () => {
     setCount(quantity + 1);
+
+    setPrice_order(pizza.price * (quantity + 1));
+
+    const _pizza = {
+      ...pizza,
+      quantity: quantity + 1,
+      price_order: pizza.price * (quantity + 1),
+    };
+    dispatch(actions.increment(_pizza));
   };
+
   const quantityDecrement = () => {
+    console.log(pizza.id);
     setCount(quantity - 1);
+
+    setPrice_order(parseFloat(price_order - pizza.price).toFixed(2));
+
+    const _pizza = {
+      ...pizza,
+      quantity: quantity - 1,
+      price_order: parseFloat(price_order - pizza.price).toFixed(2),
+    };
+    dispatch(actions.increment(_pizza));
   };
 
   return (
-    <div className="col-md-6 mb-20">
+    <div
+      className={"col-md-6 mb-20" + (quantity === 0 ? " d-none" : "")}
+      key={pizza.id}
+    >
       <div className="card flex-md-row mb-4 box-shadow h-md-250">
         <div className="card-body d-flex flex-column align-items-start">
           <h3 className="mb-25">{pizza.name}</h3>
@@ -31,14 +55,24 @@ export default function PizzaItem({ pizza }) {
               >
                 +
               </button>
-              <button
-                type="button"
-                onClick={quantityDecrement}
-                class="btn btn-secondary btn-sm btn-minus"
-                disabled={quantity === 0 ? "true" : null}
-              >
-                -
-              </button>
+
+              {quantity === 1 ? (
+                <button
+                  type="button"
+                  onClick={() => deleteItem(pizza.id)}
+                  class="btn btn-secondary btn-sm btn-minus"
+                >
+                  Remove From Cart
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  onClick={quantityDecrement}
+                  class="btn btn-secondary btn-sm btn-minus"
+                >
+                  -
+                </button>
+              )}
             </div>
           </div>
           <div className="price__btn">
@@ -46,7 +80,7 @@ export default function PizzaItem({ pizza }) {
               <p className="card-text mb-auto">Price:</p>
 
               <strong className="d-inline-block mb-2 text-success">
-                {pizza.price} €
+                {price_order} €
               </strong>
             </div>
           </div>

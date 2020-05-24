@@ -18,6 +18,7 @@ function getAll() {
   }
 }
 
+
 function create(formValues) {
   return (dispatch) => {
     apiCalls.addPizza(formValues).then((data) => {
@@ -25,10 +26,10 @@ function create(formValues) {
     });
   };
 
-  function success(pizzas) {
+  function success(pizza) {
     return {
       type: "ADD_PIZZA",
-      pizzas,
+      pizza,
     };
   }
 }

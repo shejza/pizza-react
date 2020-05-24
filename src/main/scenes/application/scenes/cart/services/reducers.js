@@ -4,6 +4,15 @@ export function pizzas(state = {}, action) {
       return {
         pizzas: action.pizzas,
       };
+    case "INCREMENT":
+      return {
+        pizzas: [action.pizza, ...state.pizzas],
+      };
+    case "DELETE_ITEM": {
+      return {
+        pizzas: state.pizzas.filter((pizza) => pizza.pizza_id !== action.id),
+      };
+    }
 
     default:
       return state;

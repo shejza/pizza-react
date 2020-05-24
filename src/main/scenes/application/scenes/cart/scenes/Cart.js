@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { actions } from "../services/actions";
 import PizzaItem from "./PizzaItem";
+import { Link } from "react-router-dom";
 
 export default function Cart() {
   const dispatch = useDispatch();
 
   const { pizzas } = useSelector((state) => state.pizzas);
   const [pizzasList, setToDos] = useState([]);
+
   let [totalPrice] = useState(0.0);
 
   useEffect(() => {
@@ -20,11 +22,14 @@ export default function Cart() {
     }
   }, [pizzas]);
 
-  // let totalPrice = 0.0;
+  const deleteItem = (pizzaID) => {
+    dispatch(actions.deleteItem(pizzaID));
+  };
 
-  const renderedPizzas = pizzasList.map((pizza, index) => {
-    totalPrice += +(pizza.price * pizza.quantity);
-    return <PizzaItem key={pizza.id} pizza={pizza} />;
+  const renderedPizzas = pizzasList.map((pizza) => {
+    totalPrice += +(pizza.price_order * pizza.quantity);
+
+    return <PizzaItem key={pizza.id} pizza={pizza} deleteItem={deleteItem} />;
   });
 
   return (
@@ -39,10 +44,20 @@ export default function Cart() {
 
         <div className="row">
           <div className="col-md-3 mt40 mb40">
-            <h3 className="mb20 mb40">Total: {totalPrice}</h3>
-            <a class="btn btn-lg btn-primary" href="#" role="button">
+            <h3 className="mb20 mb20">Total: {totalPrice.toFixed(2)} &euro;</h3>
+            <h3 className="mb20 mb40">
+              Total: &#36;{(totalPrice * 1.08).toFixed(2)}
+            </h3>
+
+            <Link
+              to={{
+                pathname: "/orders",
+              }}
+              tabIndex="-1"
+              className="btn btn-lg btn-primary"
+            >
               Proceed >>
-            </a>
+            </Link>
           </div>
         </div>
       </div>
