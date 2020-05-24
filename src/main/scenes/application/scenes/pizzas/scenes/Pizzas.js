@@ -8,6 +8,7 @@ export default function Pizzas() {
 
   const { pizzas } = useSelector((state) => state.pizzas);
   const [pizzasList, setToDos] = useState([]);
+  let [visibility, setVisibility] = useState(false);
 
   useEffect(() => {
     dispatch(actions.getAll());
@@ -20,12 +21,17 @@ export default function Pizzas() {
   }, [pizzas]);
 
   const renderedPizzas = pizzasList.map((pizza, index) => (
-    <Pizza key={pizza.id} pizza={pizza} />
+    <Pizza key={pizza.id} pizza={pizza} setVisibility={setVisibility} />
   ));
 
   return (
     <React.Fragment>
       <div className="container">
+        {visibility && (
+          <div className="alert alert-success" role="alert">
+            Your Item was added to Cart!
+          </div>
+        )}
         <div className="row mb-2">{renderedPizzas}</div>
       </div>
     </React.Fragment>

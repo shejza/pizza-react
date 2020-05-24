@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { actions } from "../services/actions";
+import { Link } from "react-router-dom";
 
 export default function Order() {
   const dispatch = useDispatch();
@@ -11,6 +12,7 @@ export default function Order() {
   };
   const [formValues, setFormValues] = useState(formDefaultValues);
   const { address, contact } = formValues;
+  let [visibility, setVisibility] = useState(false);
 
   function handleChange(e) {
     const target = e.target;
@@ -22,13 +24,31 @@ export default function Order() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    setVisibility(true);
+    setTimeout(() => {
+      setVisibility(false);
+    }, 7000);
     dispatch(actions.register(formValues));
+    setFormValues({ address: "", contact: "" });
   };
 
   return (
     <React.Fragment>
       <div className="container">
+        {visibility && (
+          <div className="alert alert-success" role="alert">
+            Your order is now completed!
+            <Link
+              to={{
+                pathname: "/",
+              }}
+              tabIndex="-1"
+              className="btn btn-sm btn-link"
+            >
+              Go To HomePage
+            </Link>
+          </div>
+        )}
         <div className="row mb-2">
           <div className="col-md-8">
             <h3 class="pb-3 mb-4 font-italic border-bottom">Your Order:</h3>

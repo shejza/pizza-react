@@ -15,10 +15,9 @@ export default function index() {
         <Router>
            <Header/>
           <Switch>
-           <Route exact path="/orders" component={Order} />
+            <Route exact path="/orders" component={Order} />
             <Route exact path="/cart" component={Cart} />
             <Route path="/" component={IndexPizza} />
-        
           </Switch>
         </Router>
     </React.Fragment>

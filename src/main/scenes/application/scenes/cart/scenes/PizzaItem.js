@@ -5,14 +5,11 @@ import { actions } from "../services/actions";
 export default function PizzaItem({ pizza, deleteItem }) {
   const dispatch = useDispatch();
 
-  const [quantity, setCount] = useState(pizza.quantity);
-  const [price_order, setPrice_order] = useState(pizza.price_order);
+  const [quantity] = useState(pizza.quantity);
+
+  const [price_order] = useState(pizza.price_order);
 
   const quantityIncrement = () => {
-    setCount(quantity + 1);
-
-    setPrice_order(pizza.price * (quantity + 1));
-
     const _pizza = {
       ...pizza,
       quantity: quantity + 1,
@@ -22,11 +19,6 @@ export default function PizzaItem({ pizza, deleteItem }) {
   };
 
   const quantityDecrement = () => {
-    console.log(pizza.id);
-    setCount(quantity - 1);
-
-    setPrice_order(parseFloat(price_order - pizza.price).toFixed(2));
-
     const _pizza = {
       ...pizza,
       quantity: quantity - 1,
@@ -40,7 +32,7 @@ export default function PizzaItem({ pizza, deleteItem }) {
       className={"col-md-6 mb-20" + (quantity === 0 ? " d-none" : "")}
       key={pizza.id}
     >
-      <div className="card flex-md-row mb-4 box-shadow h-md-250">
+      <div className="card flex-md-row mb-4 box-shadow h-md-250 pizza__cards">
         <div className="card-body d-flex flex-column align-items-start">
           <h3 className="mb-25">{pizza.name}</h3>
           <div className="quantity__pizza">
@@ -60,7 +52,7 @@ export default function PizzaItem({ pizza, deleteItem }) {
                 <button
                   type="button"
                   onClick={() => deleteItem(pizza.id)}
-                  class="btn btn-secondary btn-sm btn-minus"
+                  class="btn btn-danger btn-sm btn-minus"
                 >
                   Remove From Cart
                 </button>

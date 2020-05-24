@@ -7,9 +7,7 @@ export const actions = {
 function register(formValues) {
   return (dispatch) => {
     apiCalls.getRegister(formValues).then((data) => {
-      console.log(formValues);
       dispatch(success());
-      window.location.href = "/";
     });
   };
 

@@ -13,7 +13,7 @@ function getAll() {
 
   function success(pizzas) {
     return {
-      type: "PIZZAS_GETALL",
+      type: "PIZZAS_OREDERS_GETALL",
       pizzas,
     };
   }
@@ -21,14 +21,15 @@ function getAll() {
 
 function increment(formValues) {
   return (dispatch) => {
-    apiCalls.updatePizza(formValues).then((data) => {
-      dispatch(success(data));
+    apiCalls.updatePizza(formValues).then(() => {
+      dispatch(success(formValues));
     });
   };
 
   function success(pizza) {
+   
     return {
-      type: "INCREMENT",
+      type: "PIZZAS_OREDERS_INCREMENT",
       pizza,
     };
   }
@@ -42,9 +43,8 @@ function deleteItem(id) {
   };
 
   function success(id) {
-    console.log(id);
     return {
-      type: "DELETE_ITEM",
+      type: "PIZZAS_OREDERS_DELETE",
       id,
     };
   }

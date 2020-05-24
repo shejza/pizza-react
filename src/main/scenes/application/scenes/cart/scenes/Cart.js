@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 export default function Cart() {
   const dispatch = useDispatch();
 
-  const { pizzas } = useSelector((state) => state.pizzas);
+  const { pizzas } = useSelector((state) => state.pizzaOrders);
   const [pizzasList, setToDos] = useState([]);
 
   let [totalPrice] = useState(0.0);
@@ -29,7 +29,13 @@ export default function Cart() {
   const renderedPizzas = pizzasList.map((pizza) => {
     totalPrice += +(pizza.price_order * pizza.quantity);
 
-    return <PizzaItem key={pizza.id} pizza={pizza} deleteItem={deleteItem} />;
+    return (
+      <PizzaItem
+        key={pizza.id + "-" + pizza.price_order + "-" + pizza.quantity}
+        pizza={pizza}
+        deleteItem={deleteItem}
+      />
+    );
   });
 
   return (
