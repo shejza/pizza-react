@@ -6,7 +6,9 @@ The yummi pizza is a web application for ordering pizzas online, clients are abl
 
 ### Technologies used 
 • Frontend – ReactJS 
+
 • Backend – Laravel (Which is used here https://github.com/shejza/pizza-api)
+
 • Database – MySQL
 
 ### Installation
