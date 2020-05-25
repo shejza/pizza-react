@@ -20,7 +20,7 @@
     "validator": "^13.0.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node server/server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "predeploy": "npm run build",
