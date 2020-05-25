@@ -19,16 +19,11 @@
     "validator": "^13.0.0"
   },
   "scripts": {
-    "prod": "yarn run clean && yarn run build && NODE_ENV=production yarn run go",
-    "dev": "NODE_ENV=development yarn run go",
-    "go": "node ./bin/www",
-    "build": "NODE_ENV=production webpack --config ./config/webpack.config.js --progress --profile --colors",
-    "clean": "rm -rf ./assets && mkdir ./assets",
-    "pretty": "prettier --single-quote --trailing-comma es5 --write {client,bin,config,server}{/*,/**/*}.js",
-    "precommit": "yarn run pretty",
-    "start": "yarn run clean && yarn run build && NODE_ENV=production yarn run go",
-    "heroku-prebuild": "yarn install --production=false",
-    "postinstall": "NODE_ENV=production webpack --config ./config/webpack.config.js"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "heroku-prebuild": "yarn install --production=false"
   },
   "eslintConfig": {
     "extends": "react-app"
