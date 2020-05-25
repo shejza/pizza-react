@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { actions } from "../services/actions";
 
 export default function PizzaItem({ pizza, deleteItem }) {

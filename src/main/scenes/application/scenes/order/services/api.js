@@ -1,5 +1,4 @@
 import { apiUrl } from "../../../../../../helpers/api-url";
-import { headersFormData } from "../../../../../../helpers/headers-form-data";
 import { handleResponse } from "../../../../../../helpers/handle-response";
 
 export const apiCalls = {
